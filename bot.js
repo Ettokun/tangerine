@@ -702,13 +702,13 @@ client.on("message", async message => {
     if (platform === "pc" || platform === "PC" || platform == "Pc") {
       platform = "uplay";
     }
-    // if (platform === "xb1" || platform === "XB1" || platform === "Xb1" || platform === "xbox" || platform === "XBOX" || platform === "Xbox" || platform === "xbl" || platform === "XBL") {
-    //   platform = "xbl";
-    //   console.log(typeof username);
-    //   console.log("old username: " + username);
-    //   username = username.replace("_", " ");
-    //   console.log("new username: " + username);
-    // }
+     if (platform === "xb1" || platform === "XB1" || platform === "Xb1" || platform === "xbox" || platform === "XBOX" || platform === "Xbox" || platform === "xbl" || platform === "XBL") {
+       platform = "xbl";
+       console.log(typeof username);
+       console.log("old username: " + username);
+       username = username.replace("_", " ");
+       console.log("new username: " + username);
+     }
     const id = await r6api.getId(platform, username).then(el => el[0].userId);
     const stats = await r6api.getStats(platform, id).then(el => el[0]);
     let kdr = (stats.pvp.general.kills / stats.pvp.general.deaths).toPrecision(3);
